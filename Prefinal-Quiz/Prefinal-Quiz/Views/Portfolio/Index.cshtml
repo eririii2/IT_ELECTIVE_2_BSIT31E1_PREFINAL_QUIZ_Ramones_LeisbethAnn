@@ -1,0 +1,101 @@
+﻿@model List<Prefinal_Quiz.Models.Project>
+
+@{
+    ViewData["Title"] = "My Portfolio";
+}
+
+<div class="portfolio-container">
+
+    <div class="portfolio-header">
+
+        <div>
+            <h1>My Portfolio</h1>
+
+            <p>
+                A collection of my software development projects.
+            </p>
+        </div>
+
+        <a asp-controller="Account"
+           asp-action="Logout"
+           class="logout-button">
+            Logout
+        </a>
+
+    </div>
+
+
+    <section class="toc">
+
+        <h2>Table of Contents</h2>
+
+        <ol>
+
+            @foreach (var project in Model)
+            {
+                <li>
+                    <a asp-action="Details"
+                       asp-route-id="@project.Id">
+                        @project.Title
+                    </a>
+                </li>
+            }
+
+        </ol>
+
+    </section>
+
+
+    <section>
+
+        <h2>Projects</h2>
+
+        <div class="project-grid">
+
+            @foreach (var project in Model)
+            {
+                <div class="project-card">
+
+                    <img src="@project.ImageUrl"
+                         alt="@project.Title"
+                         class="project-image" />
+
+                    <div class="project-content">
+
+                        <h3>
+                            @project.Title
+                        </h3>
+
+                        <p>
+                            @project.Description
+                        </p>
+
+                        <p class="technologies">
+                            <strong>Technologies:</strong>
+                            @project.Technologies
+                        </p>
+
+                        <div class="project-buttons">
+
+                            <a asp-action="Details"
+                               asp-route-id="@project.Id"
+                               class="btn-primary">
+                                View Details
+                            </a>
+
+                            <a href="@project.GithubUrl"
+                               target="_blank"
+                               class="btn-secondary">
+                                GitHub
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    </section>
+</div>

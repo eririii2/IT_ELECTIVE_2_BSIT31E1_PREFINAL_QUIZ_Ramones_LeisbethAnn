@@ -1,0 +1,124 @@
+﻿@model Prefinal_Quiz.Models.Project
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="details-container">
+
+    <a asp-action="Index" class="back-link">
+        ← Back to Portfolio
+    </a>
+
+    <div class="details-card">
+
+        <img src="@Model.ImageUrl"
+             alt="@Model.Title"
+             class="details-image" />
+
+        <h1>@Model.Title</h1>
+
+        <p class="description">
+            @Model.Description
+        </p>
+
+        <div class="technology-box">
+
+            <strong>Technologies Used</strong>
+
+            <p>
+                @Model.Technologies
+            </p>
+
+        </div>
+
+        <a href="@Model.GithubUrl"
+           target="_blank"
+           class="github-button">
+            View Project on GitHub
+        </a>
+
+    </div>
+
+
+    <div class="comments-section">
+
+        <h2>Comments</h2>
+
+        <form asp-action="AddComment"
+              method="post">
+
+            <input type="hidden"
+                   name="projectId"
+                   value="@Model.Id" />
+
+            <div class="form-group">
+
+                <label>Your Name</label>
+
+                <input type="text"
+                       name="name"
+                       class="form-control"
+                       placeholder="Enter your name"
+                       required />
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Comment</label>
+
+                <textarea name="message"
+                          class="form-control"
+                          rows="4"
+                          placeholder="Write a comment..."
+                          required></textarea>
+
+            </div>
+
+            <button type="submit"
+                    class="btn-primary">
+                Post Comment
+            </button>
+
+        </form>
+
+
+        <div class="comment-list">
+
+            @if (ViewBag.Comments != null &&
+                        ViewBag.Comments.Count > 0)
+            {
+                foreach (var comment in ViewBag.Comments)
+                {
+                    <div class="comment">
+
+                        <div class="comment-header">
+
+                            <strong>
+                                @comment.Name
+                            </strong>
+
+                            <small>
+                                @comment.DatePosted
+                            </small>
+
+                        </div>
+
+                        <p>
+                            @comment.Message
+                        </p>
+
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="no-comments">
+                    No comments yet. Be the first to comment!
+                </p>
+            }
+
+        </div>
+    </div>
+</div>
