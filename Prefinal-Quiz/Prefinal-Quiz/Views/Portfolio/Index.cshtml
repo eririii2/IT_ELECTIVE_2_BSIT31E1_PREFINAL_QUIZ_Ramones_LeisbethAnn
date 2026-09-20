@@ -1,101 +1,125 @@
 ﻿@model List<Prefinal_Quiz.Models.Project>
 
-@{
-    ViewData["Title"] = "My Portfolio";
-}
-
 <div class="portfolio-container">
 
-    <div class="portfolio-header">
 
-        <div>
-            <h1>My Portfolio</h1>
+    <div class="portfolio-title">
+        <h1>Portfolio</h1>
+        <p>BSIT 31E1</p>
+    </div>
 
-            <p>
-                A collection of my software development projects.
-            </p>
+    <div class="toc">
+
+        <h2>Table of Contents</h2>
+
+        <div class="toc-category">
+            <h3>Prelim</h3>
+
+            <ul>
+                @foreach (var project in Model.Where(p => p.Category == "Prelim"))
+                {
+                    <li>
+                        <a href="#project-@project.Id">
+                            @project.Title
+                        </a>
+                    </li>
+                }
+            </ul>
         </div>
 
-        <a asp-controller="Account"
-           asp-action="Logout"
-           class="logout-button">
-            Logout
-        </a>
+
+        <div class="toc-category">
+            <h3>Midterm</h3>
+
+            <ul>
+                @foreach (var project in Model.Where(p => p.Category == "Midterm"))
+                {
+                    <li>
+                        <a href="#project-@project.Id">
+                            @project.Title
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+
+        <div class="toc-category">
+            <h3>Prefinal</h3>
+
+            <ul>
+                @foreach (var project in Model.Where(p => p.Category == "Prefinal"))
+                {
+                    <li>
+                        <a href="#project-@project.Id">
+                            @project.Title
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
 
     </div>
 
 
-    <section class="toc">
+    @foreach (var category in new[] { "Prelim", "Midterm", "Prefinal" })
+    {
+        var categoryProjects = Model
+        .Where(p => p.Category == category)
+        .ToList();
 
-        <h2>Table of Contents</h2>
+        if (categoryProjects.Any())
+        {
+            <section class="project-category">
 
-        <ol>
+                <h2>@category</h2>
 
-            @foreach (var project in Model)
-            {
-                <li>
-                    <a asp-action="Details"
-                       asp-route-id="@project.Id">
-                        @project.Title
-                    </a>
-                </li>
-            }
+                <div class="project-grid">
 
-        </ol>
+                    @foreach (var project in categoryProjects)
+                    {
+                        <div class="project-card" id="project-@project.Id">
 
-    </section>
+                            <img src="@project.ImageUrl"
+                                 alt="@project.Title"
+                                 class="project-image" />
 
+                            <div class="project-content">
 
-    <section>
+                                <h3>@project.Title</h3>
 
-        <h2>Projects</h2>
+                                <p>
+                                    @project.Description
+                                </p>
 
-        <div class="project-grid">
+                                <p class="technologies">
+                                    <strong>Technology:</strong>
+                                    @project.Technologies
+                                </p>
 
-            @foreach (var project in Model)
-            {
-                <div class="project-card">
+                                <div class="project-buttons">
 
-                    <img src="@project.ImageUrl"
-                         alt="@project.Title"
-                         class="project-image" />
+                                    <a href="@project.GithubUrl"
+                                       target="_blank"
+                                       class="github-button">
+                                        GitHub
+                                    </a>
 
-                    <div class="project-content">
+                                    <a asp-controller="Portfolio"
+                                       asp-action="Details"
+                                       asp-route-id="@project.Id"
+                                       class="btn-primary">
+                                        View Details
+                                    </a>
 
-                        <h3>
-                            @project.Title
-                        </h3>
+                                </div>
 
-                        <p>
-                            @project.Description
-                        </p>
-
-                        <p class="technologies">
-                            <strong>Technologies:</strong>
-                            @project.Technologies
-                        </p>
-
-                        <div class="project-buttons">
-
-                            <a asp-action="Details"
-                               asp-route-id="@project.Id"
-                               class="btn-primary">
-                                View Details
-                            </a>
-
-                            <a href="@project.GithubUrl"
-                               target="_blank"
-                               class="btn-secondary">
-                                GitHub
-                            </a>
+                            </div>
 
                         </div>
-
-                    </div>
-
+                    }
                 </div>
-            }
-
-        </div>
-    </section>
+            </section>
+        }
+    }
 </div>

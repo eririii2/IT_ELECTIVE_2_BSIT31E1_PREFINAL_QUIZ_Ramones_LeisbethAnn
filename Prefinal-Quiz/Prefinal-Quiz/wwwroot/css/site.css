@@ -1,8 +1,8 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f6fa;
-    color: #222;
+    background-color: #FFF9DB;
+    color: #333333;
 }
 
 a {
@@ -20,12 +20,13 @@ a {
 .login-card {
     width: 380px;
     padding: 40px;
-    background: white;
-    border-radius: 15px;
+    background: #FFFFFF;
+    border-radius: 18px;
     box-shadow: 0 10px 30px rgba(0,0,0,.1);
 }
 
     .login-card h1 {
+        font-family: 'Lobster', cursive;
         text-align: center;
     }
 
@@ -63,27 +64,69 @@ a {
     border-radius: 8px;
     border: none;
     cursor: pointer;
+    transition: 0.2s ease;
 }
 
 .btn-primary {
-    background: #2563eb;
-    color: white;
+    background: #F9D85E;
+    color: #333333;
 }
+
+    .btn-primary:hover {
+        background: #EBC84D;
+        transform: translateY(-2px);
+    }
 
 .btn-secondary {
-    background: #222;
+    background: #333333;
     color: white;
 }
+
+    .btn-secondary:hover {
+        background: #222222;
+        transform: translateY(-2px);
+    }
 
 .github-button {
-    background: #24292f;
+    background: #333333;
     color: white;
 }
 
+    .github-button:hover {
+        background: #222222;
+        transform: translateY(-2px);
+    }
+
 .logout-button {
-    background: #dc2626;
+    background: #D97706;
     color: white;
 }
+
+    .logout-button:hover {
+        background: #B45309;
+        transform: translateY(-2px);
+    }
+
+
+.portfolio-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+    .portfolio-title h1 {
+        font-family: 'Lobster', cursive;
+        font-size: 64px;
+        font-weight: normal;
+        text-align: center;
+        margin: 0 0 5px 0;
+    }
+
+    .portfolio-title p {
+        text-align: center;
+        font-size: 18px;
+        color: #666;
+        margin: 0;
+    }
 
 
 .portfolio-container {
@@ -101,20 +144,81 @@ a {
 
 
 .toc {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
+    background: #FFFFFF;
+    padding: 30px;
+    border-radius: 18px;
     margin-bottom: 40px;
-    box-shadow: 0 5px 15px rgba(0,0,0,.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
 }
 
-    .toc li {
-        margin: 10px 0;
+    .toc h2 {
+        font-family: 'Lobster', cursive;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 25px;
     }
 
-    .toc a {
-        color: #2563eb;
+.toc-category {
+    padding: 12px 0;
+}
+
+    .toc-category h3 {
+        font-family: 'Lobster', cursive;
+        font-size: 22px;
+        margin-bottom: 8px;
+        color: #B8860B;
     }
+
+    .toc-category ul {
+        margin-top: 5px;
+        padding-left: 15px;
+        list-style: none;
+    }
+
+    .toc-category li {
+        margin: 8px 0;
+    }
+
+        .toc-category li::before {
+            content: ">";
+            color: #F9D85E;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+.toc a {
+    color: #B8860B;
+    transition: 0.2s ease;
+}
+
+    .toc a:hover {
+        color: #8C6508;
+        padding-left: 4px;
+    }
+
+
+.project-category {
+    margin-top: 50px;
+}
+
+    .project-category h2 {
+        font-family: 'Lobster', cursive;
+        text-align: center;
+        font-size: 32px;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        color: #333333;
+    }
+
+        .project-category h2::after {
+            content: "";
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: #F9D85E;
+            margin: 10px auto 0;
+            border-radius: 10px;
+        }
 
 
 .project-grid {
@@ -124,16 +228,23 @@ a {
 }
 
 .project-card {
-    background: white;
-    border-radius: 15px;
+    background: #FFFFFF;
+    border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+    .project-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 30px rgba(0,0,0,.15);
+    }
 
 .project-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    display: block;
 }
 
 .project-content {
@@ -141,7 +252,14 @@ a {
 }
 
     .project-content h3 {
+        text-align: center;
+        font-size: 22px;
         margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .project-content p {
+        line-height: 1.6;
     }
 
 .technologies {
@@ -163,21 +281,27 @@ a {
 }
 
 .back-link {
-    color: #2563eb;
+    color: #B8860B;
+    transition: 0.2s ease;
 }
+
+    .back-link:hover {
+        color: #8C6508;
+    }
 
 .details-card {
     margin-top: 20px;
-    background: white;
+    background: #FFFFFF;
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
 }
 
 .details-image {
     width: 100%;
     max-height: 450px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 .details-card h1 {
@@ -187,9 +311,10 @@ a {
 
 .comments-section {
     margin-top: 30px;
-    background: white;
+    background: #FFFFFF;
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
 }
 
 .comment {

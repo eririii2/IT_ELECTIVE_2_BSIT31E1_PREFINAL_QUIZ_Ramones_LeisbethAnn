@@ -7,8 +7,4 @@
     <RootNamespace>Prefinal_Quiz</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\images\" />
-  </ItemGroup>
-
 </Project>
